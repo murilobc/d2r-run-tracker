@@ -6,5 +6,13 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=".env")
 
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Render.com provides postgres:// URLs; convert to asyncpg driver format
+        if self.database_url.startswith("postgres://"):
+            self.database_url = self.database_url.replace("postgres://", "postgresql+asyncpg://", 1)
+        elif self.database_url.startswith("postgresql://"):
+            self.database_url = self.database_url.replace("postgresql://", "postgresql+asyncpg://", 1)
+
 
 settings = Settings()

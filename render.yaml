@@ -1,0 +1,31 @@
+services:
+  - type: web
+    plan: free
+    name: d2r-api
+    runtime: docker
+    region: oregon
+    dockerfilePath: ./Dockerfile.api
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: d2r-db
+          property: connectionString
+    healthCheckPath: /health
+
+  - type: web
+    plan: free
+    name: d2r-frontend
+    runtime: docker
+    region: oregon
+    dockerfilePath: ./Dockerfile.frontend
+    envVars:
+      - key: API_URL
+        value: https://d2r-api.onrender.com
+
+databases:
+  - name: d2r-db
+    plan: free
+    region: oregon
+    ipAllowList:
+      - source: 0.0.0.0/0
+        description: everywhere
