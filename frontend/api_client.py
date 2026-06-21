@@ -3,7 +3,7 @@ import os
 import httpx
 
 BASE_URL = os.getenv("API_URL", "https://d2r-run-tracker-api.fly.dev")
-TIMEOUT = 10.0
+TIMEOUT = 30.0
 
 
 class ApiError(Exception):
