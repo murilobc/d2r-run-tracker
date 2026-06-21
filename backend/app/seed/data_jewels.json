@@ -1,0 +1,20 @@
+[
+  {"name": "Rainbow Facet (Fire Die)", "category": "jewel", "subcategory": "rainbow facet", "aliases": ["fire facet die", "fire die facet"], "is_rotw": false, "is_ladder_only": false},
+  {"name": "Rainbow Facet (Fire Level)", "category": "jewel", "subcategory": "rainbow facet", "aliases": ["fire facet level", "fire lvl facet"], "is_rotw": false, "is_ladder_only": false},
+  {"name": "Rainbow Facet (Cold Die)", "category": "jewel", "subcategory": "rainbow facet", "aliases": ["cold facet die", "cold die facet"], "is_rotw": false, "is_ladder_only": false},
+  {"name": "Rainbow Facet (Cold Level)", "category": "jewel", "subcategory": "rainbow facet", "aliases": ["cold facet level", "cold lvl facet"], "is_rotw": false, "is_ladder_only": false},
+  {"name": "Rainbow Facet (Lightning Die)", "category": "jewel", "subcategory": "rainbow facet", "aliases": ["light facet die", "lite facet die"], "is_rotw": false, "is_ladder_only": false},
+  {"name": "Rainbow Facet (Lightning Level)", "category": "jewel", "subcategory": "rainbow facet", "aliases": ["light facet level", "lite facet lvl"], "is_rotw": false, "is_ladder_only": false},
+  {"name": "Rainbow Facet (Poison Die)", "category": "jewel", "subcategory": "rainbow facet", "aliases": ["poison facet die", "psn facet die"], "is_rotw": false, "is_ladder_only": false},
+  {"name": "Rainbow Facet (Poison Level)", "category": "jewel", "subcategory": "rainbow facet", "aliases": ["poison facet level", "psn facet lvl"], "is_rotw": false, "is_ladder_only": false},
+  {"name": "Jewel (ED/IAS)", "category": "jewel", "subcategory": "magic jewel", "aliases": ["ed ias jewel", "40/15"], "is_rotw": false, "is_ladder_only": false},
+  {"name": "Jewel (ED/Max)", "category": "jewel", "subcategory": "magic jewel", "aliases": ["ed max jewel"], "is_rotw": false, "is_ladder_only": false},
+  {"name": "Jewel (Resist All)", "category": "jewel", "subcategory": "magic jewel", "aliases": ["res jewel", "resist jewel"], "is_rotw": false, "is_ladder_only": false},
+  {"name": "Jewel (IAS/Resist)", "category": "jewel", "subcategory": "magic jewel", "aliases": ["ias res jewel", "15ias jewel"], "is_rotw": false, "is_ladder_only": false},
+  {"name": "Defender's Bile", "category": "jewel", "subcategory": "colossal ancient jewel", "aliases": ["poison ancient jewel"], "is_rotw": true, "is_ladder_only": false},
+  {"name": "Guardian's Thunder", "category": "jewel", "subcategory": "colossal ancient jewel", "aliases": ["light ancient jewel"], "is_rotw": true, "is_ladder_only": false},
+  {"name": "Protector's Frost", "category": "jewel", "subcategory": "colossal ancient jewel", "aliases": ["cold ancient jewel"], "is_rotw": true, "is_ladder_only": false},
+  {"name": "Defender's Fire", "category": "jewel", "subcategory": "colossal ancient jewel", "aliases": ["fire ancient jewel"], "is_rotw": true, "is_ladder_only": false},
+  {"name": "Protector's Stone", "category": "jewel", "subcategory": "colossal ancient jewel", "aliases": ["phys ancient jewel"], "is_rotw": true, "is_ladder_only": false},
+  {"name": "Guardian's Light", "category": "jewel", "subcategory": "colossal ancient jewel", "aliases": ["magic ancient jewel"], "is_rotw": true, "is_ladder_only": false}
+]
