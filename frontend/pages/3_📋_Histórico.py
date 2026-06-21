@@ -43,10 +43,17 @@ else:
         loc_label = LOCATIONS.get(run["location"], run["location"])
         tz = f" ({run['terror_zone_note']})" if run.get("terror_zone_note") else ""
 
-        st.markdown(
+        col_info, col_del = st.columns([9, 1])
+        col_info.markdown(
             f"**#{run['run_number']}** | {loc_label}{tz} | ⏱️ {time_str} | "
             f"🎁 {items_str} | 📅 {run['created_at'][:16]}"
         )
+        if col_del.button("🗑️", key=f"del_run_{run['id']}"):
+            try:
+                api_client.delete_run(run["id"])
+                st.rerun()
+            except ApiError as e:
+                st.error(e.message)
 
     # Pagination controls
     col1, col2 = st.columns(2)

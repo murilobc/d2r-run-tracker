@@ -86,6 +86,10 @@ def list_runs(profile_id: int, location: str | None = None, page: int = 1, size:
     return _handle(_request("get", _url("/runs"), params=params))
 
 
+def delete_run(run_id: int):
+    _handle(_request("delete", _url(f"/runs/{run_id}")))
+
+
 def get_stats(profile_id: int) -> dict:
     return _handle(_request("get", _url(f"/stats/{profile_id}")))
 
