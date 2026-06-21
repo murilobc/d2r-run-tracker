@@ -65,3 +65,16 @@ else:
         if col2.button("Próxima ➡️"):
             st.session_state.history_page += 1
             st.rerun()
+
+    # Summary
+    st.divider()
+    total_seconds = sum(run["duration_seconds"] for run in runs)
+    total_items = sum(len(run["items"]) for run in runs)
+    h, remainder = divmod(total_seconds, 3600)
+    m, s = divmod(remainder, 60)
+    time_total = f"{h}h {m:02d}m {s:02d}s" if h else f"{m:02d}m {s:02d}s"
+
+    col1, col2, col3 = st.columns(3)
+    col1.metric("🕐 Tempo total", time_total)
+    col2.metric("🎁 Total de achados", total_items)
+    col3.metric("🏃 Total de runs", len(runs))
