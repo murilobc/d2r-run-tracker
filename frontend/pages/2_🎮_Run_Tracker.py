@@ -35,10 +35,16 @@ tz_note = None
 if location == "terror_zone":
     tz_note = st.text_input("Qual Terror Zone?", placeholder="Ex: Tal Rasha's Tombs")
 
-try:
-    next_num = api_client.get_next_run_number(profile["id"], location)
-except ApiError:
-    next_num = "?"
+# Cache next_run_number to avoid API call on every timer rerun
+cache_key = f"next_num_{profile['id']}_{location}"
+if not st.session_state.timer_running or cache_key not in st.session_state:
+    try:
+        next_num = api_client.get_next_run_number(profile["id"], location)
+        st.session_state[cache_key] = next_num
+    except ApiError:
+        next_num = st.session_state.get(cache_key, "?")
+else:
+    next_num = st.session_state.get(cache_key, "?")
 col2.metric("Run #", next_num)
 
 
@@ -135,6 +141,8 @@ if st.session_state.timer_finished:
             st.session_state.timer_finished = False
             st.session_state.timer_elapsed = 0.0
             st.session_state.run_items = []
+            # Invalidate cached run number so it refreshes
+            st.session_state.pop(f"next_num_{profile['id']}_{location}", None)
             st.success(f"✅ Run #{next_num} salva!")
             time.sleep(1)
             st.rerun()
