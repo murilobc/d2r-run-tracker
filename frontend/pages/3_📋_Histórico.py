@@ -1,4 +1,6 @@
 import streamlit as st
+from datetime import datetime
+
 import api_client
 from api_client import ApiError
 from constants import LOCATIONS_WITH_ALL, LOCATIONS
@@ -44,9 +46,11 @@ else:
         tz = f" ({run['terror_zone_note']})" if run.get("terror_zone_note") else ""
 
         col_info, col_del = st.columns([9, 1])
+        dt = datetime.fromisoformat(run["created_at"].replace("Z", "+00:00"))
+        date_str = dt.strftime("%H:%M %d/%m/%Y")
         col_info.markdown(
             f"**#{run['run_number']}** | {loc_label}{tz} | ⏱️ {time_str} | "
-            f"🎁 {items_str} | 📅 {run['created_at'][:16]}"
+            f"🎁 {items_str} | 📅 {date_str}"
         )
         if col_del.button("🗑️", key=f"del_run_{run['id']}"):
             try:
@@ -70,11 +74,17 @@ else:
     st.divider()
     total_seconds = sum(run["duration_seconds"] for run in runs)
     total_items = sum(len(run["items"]) for run in runs)
+    avg_seconds = total_seconds // len(runs) if runs else 0
+
     h, remainder = divmod(total_seconds, 3600)
     m, s = divmod(remainder, 60)
     time_total = f"{h}h {m:02d}m {s:02d}s" if h else f"{m:02d}m {s:02d}s"
 
-    col1, col2, col3 = st.columns(3)
+    avg_m, avg_s = divmod(avg_seconds, 60)
+    time_avg = f"{avg_m:02d}m {avg_s:02d}s"
+
+    col1, col2, col3, col4 = st.columns(4)
     col1.metric("🕐 Tempo total", time_total)
-    col2.metric("🎁 Total de achados", total_items)
-    col3.metric("🏃 Total de runs", len(runs))
+    col2.metric("⏱️ Média por run", time_avg)
+    col3.metric("🎁 Total de achados", total_items)
+    col4.metric("🏃 Total de runs", len(runs))
