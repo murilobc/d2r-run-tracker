@@ -89,8 +89,10 @@ else:
     col3.metric("🎁 Total de achados", total_items)
     col4.metric("🏃 Total de runs", len(runs))
 
-# Floating scroll buttons
-st.markdown("""
+# Floating scroll buttons (using components.html to bypass Streamlit CSP)
+import streamlit.components.v1 as components
+
+components.html("""
 <style>
 .float-buttons {
     position: fixed;
@@ -120,7 +122,15 @@ st.markdown("""
 }
 </style>
 <div class="float-buttons">
-    <button onclick="const main = window.parent.document.querySelector('section.main'); main.scrollTo({top:0, behavior:'smooth'});" title="Ir ao topo">⬆️</button>
-    <button onclick="const main = window.parent.document.querySelector('section.main'); main.scrollTo({top:main.scrollHeight, behavior:'smooth'});" title="Ir ao final">⬇️</button>
+    <button onclick="scrollPage('top')" title="Ir ao topo">⬆️</button>
+    <button onclick="scrollPage('bottom')" title="Ir ao final">⬇️</button>
 </div>
-""", unsafe_allow_html=True)
+<script>
+function scrollPage(direction) {
+    const main = window.parent.document.querySelector('section.main');
+    if (main) {
+        main.scrollTo({top: direction === 'top' ? 0 : main.scrollHeight, behavior: 'smooth'});
+    }
+}
+</script>
+""", height=0)
