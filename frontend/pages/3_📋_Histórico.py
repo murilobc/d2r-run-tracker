@@ -101,7 +101,7 @@ st.markdown("""
     gap: 0.5rem;
     z-index: 9999;
 }
-.float-buttons a {
+.float-buttons button {
     background: #262730;
     border: 1px solid #4a4a5a;
     border-radius: 50%;
@@ -110,18 +110,17 @@ st.markdown("""
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
     font-size: 1.2rem;
     color: #eaeaea;
     cursor: pointer;
     transition: background 0.2s;
 }
-.float-buttons a:hover {
+.float-buttons button:hover {
     background: #3a3a4a;
 }
 </style>
 <div class="float-buttons">
-    <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;" title="Ir ao topo">⬆️</a>
-    <a href="#" onclick="window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'}); return false;" title="Ir ao final">⬇️</a>
+    <button onclick="const main = window.parent.document.querySelector('section.main'); main.scrollTo({top:0, behavior:'smooth'});" title="Ir ao topo">⬆️</button>
+    <button onclick="const main = window.parent.document.querySelector('section.main'); main.scrollTo({top:main.scrollHeight, behavior:'smooth'});" title="Ir ao final">⬇️</button>
 </div>
 """, unsafe_allow_html=True)
