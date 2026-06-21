@@ -20,7 +20,11 @@ app = FastAPI(title="D2R MF Run Tracker", version="1.0.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8501", "http://frontend:8501"],
+    allow_origins=[
+        "http://localhost:8501",
+        "http://frontend:8501",
+        "https://d2r-run-tracker.fly.dev",
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
