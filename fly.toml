@@ -2,7 +2,7 @@ app = "d2r-run-tracker"
 primary_region = "gru"
 
 [build]
-  dockerfile = "Dockerfile.frontend"
+  dockerfile = "Dockerfile"
 
 [env]
   API_URL = "https://d2r-run-tracker-api.fly.dev"
